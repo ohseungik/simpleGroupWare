@@ -43,12 +43,14 @@ server.listen(5000, function () {
 })
 
 // api settings
-server.use("/join", function (req, res) {
+server.use("/api/join", function (req, res) {
     api.ServiceAPI.join(req, res, User);
 });
 
-server.use("/login", api.ServiceAPI.login);
-server.use("/logout", api.ServiceAPI.logout); 
+server.use("/api/login", function (req, res) {
+    api.ServiceAPI.login(req, res, User);
+});
+server.use("/api/logout", api.ServiceAPI.logout); 
 
 
 

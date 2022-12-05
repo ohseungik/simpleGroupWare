@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom';
+import "./index.scss";
 
 import { ConfigProvider } from 'antd';
 import koKR from 'antd/lib/locale/ko_KR';
@@ -7,16 +8,54 @@ import koKR from 'antd/lib/locale/ko_KR';
 // import 'antd/dist/antd.css';
 import "moment/locale/ko";
 import moment from 'moment';
-
 import Router from './router/Router.js';
 
 moment.locale('ko');
 
+export const config = {
+  serverURL: "http://192.168.0.195:1234"
+}
+
+const initialState = {
+  audit: {
+      login: false,
+  }
+};
+
+function reducer(state, action) {
+  switch(action.type) {
+      case 'LOGIN_SUCCESS':
+        return {
+          ...state,
+          audit: {
+            login: true
+          }
+        };
+      case 'LOGOUT_SUCCESS':
+        return initialState;
+        
+      default:
+        return state;
+  }
+}
+
+const initializer = (initialValue = initialState) => {
+  return JSON.parse(localStorage.getItem('pinsign30_state')) || initialValue;
+}
+
+export const AppDispatch = React.createContext(undefined);
+
 export const App = () => {  
+    const [state, dispatch] = React.useReducer(reducer, initialState, initializer);
+
+    React.useEffect(() => {
+        localStorage.setItem('simpleGroupWare_state', JSON.stringify(state));
+    }, [state]);
+
     return (
-      <>
-        <Router />
-      </>
+      <AppDispatch.Provider value={{globalState:state, dispatch:dispatch}}>
+        <Router/>
+      </AppDispatch.Provider>
     );
 }
 
