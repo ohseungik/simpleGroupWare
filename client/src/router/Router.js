@@ -1,3 +1,4 @@
+import "./Router.scss";
 import { AppDispatch } from "../index.js";
 import React from "react";
 import { Route, Redirect, HashRouter } from 'react-router-dom';
@@ -7,6 +8,8 @@ import Login from '../components/login/Login';
 import DashBoard from '../components/dashboard/DashBoard';
 import NavigationBar from "../components/common/NavigationBar";
 import { Spin } from "antd";
+import Work from "../components/work/Work";
+import Admin from "../components/admin/Admin";
 
 const NavRoute = ({exact, path, component: Component}) => {
     const {globalState} = React.useContext(AppDispatch);
@@ -20,7 +23,7 @@ const NavRoute = ({exact, path, component: Component}) => {
           <>
             {globalState.audit.login ? (
               <Spin spinning={loading}>
-                {/* <NavigationBar/> */}
+                <NavigationBar/>
                 <Component {...{ props, loading, setLoading}} />
               </Spin>
             ) : (
@@ -49,6 +52,8 @@ const Router = () => {
         <Route path="/login" component={Login} />
         <Route path="/join" component={Join} />
         <NavRoute path="/dashboard" component={DashBoard}/> 
+        <NavRoute path="/work" component={Work}/> 
+        <NavRoute path="/admin" component={Admin}/> 
         <Route path={"/"} component={() => <Redirect to={"/login"} />} />
         <Redirect from="*" to={"/"} />
       </AnimatedSwitch>

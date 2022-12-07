@@ -11,6 +11,11 @@ export const Login = async (email, secret) => {
     return await service('post', config.serverURL + "/api/login", data);
 }
 
+export const Logout = async () => {
+    return await service('post', config.serverURL + "/api/logout", {});
+}
+
+
 export const Join = async (email, secret, name, birthday) => {
     let data = {
        email: email,
@@ -21,7 +26,6 @@ export const Join = async (email, secret, name, birthday) => {
 
     return await service('post', config.serverURL + "/api/join", data);
 }
-
 
 const service = async (method, url, data) => {
     return axios({

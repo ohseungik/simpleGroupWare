@@ -1,0 +1,38 @@
+.work-layout {
+    padding: 24px;
+    height: 100vh;
+    background-color: #e6e6e6;
+
+    .work-header {
+        height: auto;
+        padding-inline: 10px;
+        line-height: 20px;
+        background-color: #e6e6e6;
+
+        .work-header-right-content {
+            display: flex;
+            align-items: center;
+            float: right;
+
+            h3 {
+                width: 50px;
+                margin-right: 10px;
+            }
+
+            .ant-input {
+                width: 150px;
+                margin-right: 20px;
+            }
+
+            .ant-input-borderless {
+                border-radius: 0;
+                border-bottom: 1px solid #1890bb;
+            }
+        }
+    }
+
+    .work-card {
+        height: calc(100vh - 250px);
+        background: rgb(255, 255, 255);
+    }
+}

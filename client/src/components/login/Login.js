@@ -3,7 +3,7 @@ import "./Login.scss";
 import { AppDispatch } from "../../index.js";
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Form, Input, Button, Modal, Layout } from "antd";
+import { Form, Input, Button, Modal, Layout, Image } from "antd";
 
 const { Content } = Layout;
 
@@ -41,7 +41,7 @@ const Login = () => {
         <Content>
           <Form className="login-form" form={form} onFinish={handleOK}>
             <div className="logo">
-              <img alt="logo" src={"./img/sample-logo@2x.png"} />
+              <Image className="logo" src={"./img/sample-logo@2x.png"} preview={false} />
             </div>
             <Form.Item
               rules={[{ required: true, message: "이메일을 입력해주세요." }]}

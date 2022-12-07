@@ -2,7 +2,7 @@ import * as api from '../../api/api';
 import "./join.scss";
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Form, Input, Button, Modal, Layout, message, DatePicker } from "antd";
+import { Form, Input, Button, Modal, Layout, message, DatePicker, Image } from "antd";
 import moment from 'moment';
 
 const { Content } = Layout;
@@ -36,7 +36,7 @@ const Join = () => {
       <Content>
         <Form className="join-form" form={form} onFinish={handleOK}>
           <div className="logo">
-            <img alt="logo" src={"./img/sample-logo@2x.png"} />
+            <Image src={"./img/sample-logo@2x.png"} preview={false} />
           </div>
           <Form.Item
             rules={[{ required: true, message: "이메일을 입력해주세요." }]}

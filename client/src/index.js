@@ -17,6 +17,7 @@ export const config = {
 }
 
 const initialState = {
+  selectMenu: "",
   audit: {
       login: false,
   }
@@ -27,6 +28,7 @@ function reducer(state, action) {
       case 'LOGIN_SUCCESS':
         return {
           ...state,
+          selectMenu: "dashboard",
           audit: {
             login: true
           }
@@ -34,13 +36,20 @@ function reducer(state, action) {
       case 'LOGOUT_SUCCESS':
         return initialState;
         
+
+      case 'SELECT_MENU':
+        return {
+          ...state,
+          selectMenu: action.payload
+        };
+        
       default:
         return state;
   }
 }
 
 const initializer = (initialValue = initialState) => {
-  return JSON.parse(localStorage.getItem('pinsign30_state')) || initialValue;
+  return JSON.parse(localStorage.getItem('simpleGroupWare_state')) || initialValue;
 }
 
 export const AppDispatch = React.createContext(undefined);

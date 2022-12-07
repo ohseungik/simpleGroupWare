@@ -14,17 +14,17 @@ const login = (req, res, User) => {
     const email = req.body.email;
     const secret = req.body.secret;
 
-    req.session.user = {
-        email: email,
-        secret: secret
-    }
-
     User.findOne({email: email}, (error, user) => {
         if(error) {
             res.json({resultCode: errorCode.login_findOne_failed, data: {error: error}});
             return;
         } else if(user) {
             if(user.secret === secret) {
+                req.session.user = {
+                  email: email,
+                  secret: secret,
+                };
+
                res.json({resultCode: 0, data: {email: email, secret: secret}});
             } else {
                res.json({resultCode: errorCode.login_secret_failed, data: {message: "secret is not matched"}});
