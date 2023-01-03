@@ -18,14 +18,15 @@ const Login = () => {
         if(response.resultCode === 0) {
             dispatch({
                 type: 'LOGIN_SUCCESS', 
+                payload: { login_user_email: value.email }
             });
 
             history.push("/dashboard");
         } else {
             Modal.error({
-                width: "500px",
                 title: '로그인 실패',
                 content: '아이디 또는 비밀번호를 확인하신 후 다시 시도해주세요.',
+                className: 'modal-error',
                 onOk: () => {
                     form.setFieldsValue({
                         email: '',

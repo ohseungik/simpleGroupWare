@@ -60,7 +60,7 @@ const NavigationBar = () => {
           <Avatar style={{ backgroundColor: "white" }} size="default"></Avatar>
         ),
         key: "avater",
-        children: [{ label: "로그아웃", key: "logout", onClick: () => Logout()}],
+        children: [{ label: "로그아웃", key: "logout", className: "nav-logout", onClick: () => Logout()}],
       },
     ];
 

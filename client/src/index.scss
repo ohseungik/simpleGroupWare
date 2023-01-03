@@ -3,5 +3,14 @@ body {
     height: 100vh;
     overflow-y: hidden;
     background-color: #f8f8f8;
+
+    .ant-menu-title-content {
+        font-family: "Regular";
+    }
+    
 }
 
+@font-face {
+    font-family: "Regular";
+    src: url("./fonts/NanumSquareRoundR.ttf");
+}

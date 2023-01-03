@@ -20,7 +20,10 @@ const initialState = {
   selectMenu: "",
   audit: {
       login: false,
-  }
+      login_user_email: ""
+  },
+  workStartDate: "",
+  workEndDate: ""
 };
 
 function reducer(state, action) {
@@ -30,18 +33,25 @@ function reducer(state, action) {
           ...state,
           selectMenu: "dashboard",
           audit: {
-            login: true
+            login: true,
+            login_user_email: action.payload.login_user_email
           }
         };
       case 'LOGOUT_SUCCESS':
         return initialState;
         
-
       case 'SELECT_MENU':
         return {
           ...state,
           selectMenu: action.payload
         };
+
+      case "WORKS_DATA":
+        return {
+          ...state,
+          workStartDate: action.payload.workStartDate,
+          workEndDate: action.payload.workEndDate
+        }
         
       default:
         return state;

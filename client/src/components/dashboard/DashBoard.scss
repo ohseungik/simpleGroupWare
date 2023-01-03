@@ -3,8 +3,20 @@
     height: 100vh;
     background-color: #e6e6e6;
 
-    .work-card {
-        height: 432px;
+    .dashboard-card {
+        width: 300px;
+        height: calc(100vh - 800px);
         background: rgb(255, 255, 255);
+
+        .dashboard-title {
+            font-family: "Regular";
+            font-size: large;
+        }
+        
+        .dashboard-flex {
+            display: flex;
+            justify-content: space-evenly;
+            
+        }
     }
 }

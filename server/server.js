@@ -51,6 +51,23 @@ server.use("/api/login", function (req, res) {
     api.ServiceAPI.login(req, res, User);
 });
 server.use("/api/logout", api.ServiceAPI.logout); 
+server.use("/api/work", function (req, res) {
+    api.ServiceAPI.work(req, res, User);
+});
+
+server.use("/api/workStart", function (req, res) {
+    api.ServiceAPI.workStart(req, res, User);
+});
+
+server.use("/api/workEnd", function (req, res) {
+    api.ServiceAPI.workEnd(req, res, User);
+});
+
+server.use("/api/workOne", function (req, res) {
+    api.ServiceAPI.workOne(req, res, User);
+});
+
+
 
 
 
